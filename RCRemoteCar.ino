@@ -10,10 +10,6 @@ void setup()
   pinMode(7, OUTPUT);  //motor2
   pinMode(8, OUTPUT);  //motor4
   pinMode(13, OUTPUT); //motor3
-  pinMode(9, INPUT);   //SW4
-  pinMode(10, INPUT);  //SW3
-  pinMode(11, INPUT);  //SW2
-  pinMode(12, INPUT);  //SW1
 }
 
 void loop()
@@ -24,15 +20,21 @@ void loop()
      Serial.println(value);
      switch(value)
      {
-         case 4111122176: Serial.println("1");
-       		forward();
-       		break;
-         case 4144545536:backward();
-       		break;
-         case 4177968896:right();
-       		break;
-       	 case 4211392256:left();
+         case 4111122176:
+       		    forward();
+       		    break;
+         case 4144545536:
+             backward();
+       		    break;
+         case 4177968896:
+              right();
+       		     break;
+       	 case 4211392256:
+            left();
             break;
+         case 4278238976: 
+            stop();
+       		   break;
      }
      irrecv.resume();
   }
@@ -60,3 +62,12 @@ void backward()//SW1
   digitalWrite(7,LOW);
   digitalWrite(8,LOW);
   digitalWrite(13,HIGH);}
+
+void stop()
+{
+  digitalWrite(4,LOW);
+  digitalWrite(7,LOW);
+  digitalWrite(8,LOW);
+  digitalWrite(13,LOW);
+  
+}
